@@ -1,29 +1,29 @@
 // @flow
 import * as d3 from 'd3'
 
-export type TrackId = 'MOBILE' | 'WEB_CLIENT' | 'FOUNDATIONS' | 'SERVERS' |
-  'PROJECT_MANAGEMENT' | 'COMMUNICATION' | 'CRAFT' | 'INITIATIVE' |
-  'CAREER_DEVELOPMENT' | 'ORG_DESIGN' | 'WELLBEING' | 'ACCOMPLISHMENT' |
-  'MENTORSHIP' | 'EVANGELISM' | 'RECRUITING' | 'COMMUNITY'
+export type TrackId = 'CODE_DESIGN' | 'SIMPLICITY' | 'BUSINESS_KNOWLEDGE' | 'REFACTORING' |
+  'COMMUNICATION' | 'PERFORMANCE' | 'INITIATIVE' | 'VISIBILITY' |
+  'CROSS_ORG_DEVELOPMENT' | 'WELLBEING' | 'ACCOMPLISHMENT' |
+  'MENTORSHIP' | 'BALANCE' | 'RECRUITING' | 'VALIDATION' | 'VISION'
 export type Milestone = 0 | 1 | 2 | 3 | 4 | 5
 
 export type MilestoneMap = {
-  'MOBILE': Milestone,
-  'WEB_CLIENT': Milestone,
-  'FOUNDATIONS': Milestone,
-  'SERVERS': Milestone,
-  'PROJECT_MANAGEMENT': Milestone,
+  'CODE_DESIGN': Milestone,
+  'SIMPLICITY': Milestone,
+  'BUSINESS_KNOWLEDGE': Milestone,
+  'REFACTORING': Milestone,
   'COMMUNICATION': Milestone,
-  'CRAFT': Milestone,
+  'PERFORMANCE': Milestone,
   'INITIATIVE': Milestone,
-  'CAREER_DEVELOPMENT': Milestone,
-  'ORG_DESIGN': Milestone,
+  'VISIBILITY': Milestone,
+  'CROSS_ORG_DEVELOPMENT': Milestone,
   'WELLBEING': Milestone,
   'ACCOMPLISHMENT': Milestone,
   'MENTORSHIP': Milestone,
-  'EVANGELISM': Milestone,
+  'BALANCE': Milestone,
   'RECRUITING': Milestone,
-  'COMMUNITY': Milestone
+  'VALIDATION': Milestone,
+  'VISION': Milestone
 }
 export const milestones = [0, 1, 2, 3, 4, 5]
 
@@ -35,7 +35,7 @@ export const milestoneToPoints = (milestone: Milestone): number => {
     case 3: return 6
     case 4: return 12
     case 5: return 20
-    default: return 0
+    default: return 1
   }
 }
 
@@ -55,9 +55,13 @@ export const pointsToLevels = {
   '90': '5.1',
   '110': '5.2',
   '135': '5.3',
+  '150': '5.4',
+  '185': '5.5',
+  '215': '5.6',
+  '230': '5.7',
 }
 
-export const maxLevel = 135
+export const maxLevel = 230
 
 export type Track = {
   displayName: string,
@@ -71,27 +75,27 @@ export type Track = {
 }
 
 type Tracks = {|
-  'MOBILE': Track,
-  'WEB_CLIENT': Track,
-  'FOUNDATIONS': Track,
-  'SERVERS': Track,
-  'PROJECT_MANAGEMENT': Track,
+  'CODE_DESIGN': Track,
+  'SIMPLICITY': Track,
+  'BUSINESS_KNOWLEDGE': Track,
+  'REFACTORING': Track,
   'COMMUNICATION': Track,
-  'CRAFT': Track,
+  'PERFORMANCE': Track,
   'INITIATIVE': Track,
-  'CAREER_DEVELOPMENT': Track,
-  'ORG_DESIGN': Track,
+  'VISIBILITY': Track,
+  'CROSS_ORG_DEVELOPMENT': Track,
   'WELLBEING': Track,
   'ACCOMPLISHMENT': Track,
   'MENTORSHIP': Track,
-  'EVANGELISM': Track,
+  'BALANCE': Track,
   'RECRUITING': Track,
-  'COMMUNITY': Track
+  'VALIDATION': Track,
+  'VISION': Track
 |}
 
 export const tracks: Tracks = {
-  "MOBILE": {
-    "displayName": "Mobile",
+  "CODE_DESIGN": {
+    "displayName": "Code Design",
     "category": "A",
     "description": "Develops expertise in native mobile platform engineering, such as iOS or Android",
     "milestones": [{
@@ -157,8 +161,8 @@ export const tracks: Tracks = {
     }],
   },
 
-  "WEB_CLIENT": {
-    "displayName": "Web client",
+  "SIMPLICITY": {
+    "displayName": "Simplicity",
     "category": "A",
     "description": "Develops expertise in web client technologies, such as HTML, CSS, and JavaScript",
     "milestones": [{
@@ -224,8 +228,8 @@ export const tracks: Tracks = {
     }],
   },
 
-  "FOUNDATIONS": {
-    "displayName": "Foundations",
+  "BUSINESS_KNOWLEDGE": {
+    "displayName": "Business Knowledge",
     "category": "A",
     "description": "Develops expertise in foundational systems, such as deployments, pipelines, databases and machine learning",
     "milestones": [{
@@ -291,8 +295,8 @@ export const tracks: Tracks = {
     }],
   },
 
-  "SERVERS": {
-    "displayName": "Servers",
+  "REFACTORING": {
+    "displayName": "Refactoring",
     "category": "A",
     "description": "Develops expertise in server side engineering, using technologies such as Go, NodeJS, or Scala",
     "milestones": [{
@@ -354,73 +358,6 @@ export const tracks: Tracks = {
         "Researched, vetted, and selected Go as Medium's statically typed language",
         "Defined microservices architecture and medium2 migration plan",
         "Defined and implemented proprietary IP core to the company's success",
-      ],
-    }],
-  },
-
-  "PROJECT_MANAGEMENT": {
-    "displayName": "Project management",
-    "category": "B",
-    "description": "Delivers well-scoped programs of work that meet their goals, on time, to budget, harmoniously",
-    "milestones": [{
-      "summary": "Effectively delivers individual tasks",
-      "signals": [
-        "Estimates small tasks accurately",
-        "Delivers tightly-scoped projects efficiently",
-        "Writes effective technical specs outlining approach",
-      ],
-      "examples": [
-        "Wrote the technical spec for featured post images",
-        "Delivered stream item support for email digests",
-        "Delivered payment history dashboard",
-      ],
-    }, {
-      "summary": "Effectively delivers small personal projects",
-      "signals": [
-        "Performs research and considers alternative approaches",
-        "Balances pragmatism and polish appropriately",
-        "Defines and hits interim milestones",
-      ],
-      "examples": [
-        "Delivered promo editor",
-        "Delivered audio uploading for web client",
-        "Executed the recommends to claps backfill",
-      ],
-    }, {
-      "summary": "Effectively delivers projects through a small team",
-      "signals": [
-        "Delegates tasks to others appropriately",
-        "Integrates business needs into project planning",
-        "Chooses appropriate project management strategy based on context",
-      ],
-      "examples": [
-        "Ran project retro to assess improvement opportunities",
-        "Completed launch checklist unprompted for well controlled rollout",
-        "Facilitated project kickoff meeting to get buy-in",
-      ],
-    }, {
-      "summary": "Effectively delivers projects through a large team, or with a significant amount of stakeholders or complexity",
-      "signals": [
-        "Finds ways to deliver requested scope faster, and prioritizes backlog",
-        "Manages dependencies on other projects and teams",
-        "Leverages recognition of repeated project patterns",
-      ],
-      "examples": [
-        "Oversaw technical delivery of Hightower",
-        "Managed infrastructure migration to VPC",
-        "Involved marketing, legal, and appropriate functions at project start",
-      ],
-    }, {
-      "summary": "Manages major company pushes delivered by multiple teams",
-      "signals": [
-        "Considers external constraints and business objectives when planning",
-        "Leads teams of teams, and coordinates effective cross-functional collaboration",
-        "Owns a key company metric",
-      ],
-      "examples": [
-        "Managed technical migration to SOA",
-        "Lead technical delivery of 10/7",
-        "Delivered multi-month engineering project on time",
       ],
     }],
   },
@@ -492,69 +429,70 @@ export const tracks: Tracks = {
     }],
   },
 
-  "CRAFT": {
-    "displayName": "Craft",
+
+  "PERFORMANCE": {
+    "displayName": "Performance",
     "category": "B",
-    "description": "Embodies and promotes practices to ensure excellent quality products and services",
+    "description": "Delivers well-scoped programs of work that meet their goals, on time, to budget, harmoniously",
     "milestones": [{
-      "summary": "Delivers consistently good quality work",
+      "summary": "Effectively delivers individual tasks",
       "signals": [
-        "Tests new code thoroughly, both locally, and in production once shipped",
-        "Writes tests for every new feature and bug fix",
-        "Writes clear comments and documentation",
+        "Estimates small tasks accurately",
+        "Delivers tightly-scoped projects efficiently",
+        "Writes effective technical specs outlining approach",
       ],
       "examples": [
-        "Caught a bug on Hatch before it went live",
-        "Landed non-trivial PR with no caretaker comments",
-        "Wrote hermetic tests for the happy and sad cases",
+        "Wrote the technical spec for featured post images",
+        "Delivered stream item support for email digests",
+        "Delivered payment history dashboard",
       ],
     }, {
-      "summary": "Increases the robustness and reliability of codebases, and devotes time to polishing products and systems",
+      "summary": "Effectively delivers small personal projects",
       "signals": [
-        "Refactors existing code to make it more testable",
-        "Adds tests for uncovered areas",
-        "Deletes unnecessary code and deprecates proactively when safe to do so",
+        "Performs research and considers alternative approaches",
+        "Balances pragmatism and polish appropriately",
+        "Defines and hits interim milestones",
       ],
       "examples": [
-        "Requested tests for a PR when acting as reviewer",
-        "Reduced the number of zelda fitzgerald exceptions",
-        "Fixed a TODO for someone else in the codebase",
+        "Delivered promo editor",
+        "Delivered audio uploading for web client",
+        "Executed the recommends to claps backfill",
       ],
     }, {
-      "summary": "Improves others' ability to deliver great quality work",
+      "summary": "Effectively delivers projects through a small team",
       "signals": [
-        "Implements systems that enable better testing",
-        "Gives thoughtful code reviews as a domain expert",
-        "Adds tooling to improve code quality",
+        "Delegates tasks to others appropriately",
+        "Integrates business needs into project planning",
+        "Chooses appropriate project management strategy based on context",
       ],
       "examples": [
-        "Improved PRB to run the same volume of tests faster",
-        "Simplified hermetic test data modification",
-        "Created fixture system for visual quality",
+        "Ran project retro to assess improvement opportunities",
+        "Completed launch checklist unprompted for well controlled rollout",
+        "Facilitated project kickoff meeting to get buy-in",
       ],
     }, {
-      "summary": "Advocates for and models great quality with proactive actions, and tackles difficult and subtle system issues",
+      "summary": "Effectively delivers projects through a large team, or with a significant amount of stakeholders or complexity",
       "signals": [
-        "Builds systems so as to eliminate entire classes of programmer error",
-        "Focuses the team on quality with regular reminders",
-        "Coordinates Watch priorities and projects",
+        "Finds ways to deliver requested scope faster, and prioritizes backlog",
+        "Manages dependencies on other projects and teams",
+        "Leverages recognition of repeated project patterns",
       ],
       "examples": [
-        "Added code coverage reporting to iOS CI pipeline",
-        "Iterated repeatedly to develop Medium's underlines solution",
-        "Defined and oversaw plan for closing Heartbleed vulnerability",
+        "Oversaw technical delivery of Hightower",
+        "Managed infrastructure migration to VPC",
+        "Involved marketing, legal, and appropriate functions at project start",
       ],
     }, {
-      "summary": "Enables and encourages the entire organization to make quality a central part of the development process",
+      "summary": "Manages major company pushes delivered by multiple teams",
       "signals": [
-        "Defines policies for the engineering org that encourage quality work",
-        "Identifies and eliminates single points of failure throughout the organization",
-        "Secures time and resources from execs to support great quality",
+        "Considers external constraints and business objectives when planning",
+        "Leads teams of teams, and coordinates effective cross-functional collaboration",
+        "Owns a key company metric",
       ],
       "examples": [
-        "Negotiated resources for Fix-It week with exec team",
-        "Instituted and ensured success of a 20% time policy",
-        "Started The Watch",
+        "Managed technical migration to SOA",
+        "Lead technical delivery of 10/7",
+        "Delivered multi-month engineering project on time",
       ],
     }],
   },
@@ -626,8 +564,76 @@ export const tracks: Tracks = {
     }],
   },
 
-  "CAREER_DEVELOPMENT": {
-    "displayName": "Career development",
+
+  "VISIBILITY": {
+    "displayName": "Visibility",
+    "category": "B",
+    "description": "Embodies and promotes practices to ensure excellent quality products and services",
+    "milestones": [{
+      "summary": "Delivers consistently good quality work",
+      "signals": [
+        "Tests new code thoroughly, both locally, and in production once shipped",
+        "Writes tests for every new feature and bug fix",
+        "Writes clear comments and documentation",
+      ],
+      "examples": [
+        "Caught a bug on Hatch before it went live",
+        "Landed non-trivial PR with no caretaker comments",
+        "Wrote hermetic tests for the happy and sad cases",
+      ],
+    }, {
+      "summary": "Increases the robustness and reliability of codebases, and devotes time to polishing products and systems",
+      "signals": [
+        "Refactors existing code to make it more testable",
+        "Adds tests for uncovered areas",
+        "Deletes unnecessary code and deprecates proactively when safe to do so",
+      ],
+      "examples": [
+        "Requested tests for a PR when acting as reviewer",
+        "Reduced the number of zelda fitzgerald exceptions",
+        "Fixed a TODO for someone else in the codebase",
+      ],
+    }, {
+      "summary": "Improves others' ability to deliver great quality work",
+      "signals": [
+        "Implements systems that enable better testing",
+        "Gives thoughtful code reviews as a domain expert",
+        "Adds tooling to improve code quality",
+      ],
+      "examples": [
+        "Improved PRB to run the same volume of tests faster",
+        "Simplified hermetic test data modification",
+        "Created fixture system for visual quality",
+      ],
+    }, {
+      "summary": "Advocates for and models great quality with proactive actions, and tackles difficult and subtle system issues",
+      "signals": [
+        "Builds systems so as to eliminate entire classes of programmer error",
+        "Focuses the team on quality with regular reminders",
+        "Coordinates Watch priorities and projects",
+      ],
+      "examples": [
+        "Added code coverage reporting to iOS CI pipeline",
+        "Iterated repeatedly to develop Medium's underlines solution",
+        "Defined and oversaw plan for closing Heartbleed vulnerability",
+      ],
+    }, {
+      "summary": "Enables and encourages the entire organization to make quality a central part of the development process",
+      "signals": [
+        "Defines policies for the engineering org that encourage quality work",
+        "Identifies and eliminates single points of failure throughout the organization",
+        "Secures time and resources from execs to support great quality",
+      ],
+      "examples": [
+        "Negotiated resources for Fix-It week with exec team",
+        "Instituted and ensured success of a 20% time policy",
+        "Started The Watch",
+      ],
+    }],
+  },
+
+  "CROSS_ORG_DEVELOPMENT": {
+    "displayName": "Cross-org development",
     "category": "C",
     "description": "Provides strategic support to engineers to help them build the career they want",
     "milestones": [{
@@ -689,73 +695,6 @@ export const tracks: Tracks = {
         "Provided coaching to group leads",
         "Devised Pathwise curriculum for group leads",
         "Advocated to execs for engineer development resources and programs",
-      ],
-    }],
-  },
-
-  "ORG_DESIGN": {
-    "displayName": "Org design",
-    "category": "C",
-    "description": "Defines processes and structures that enables the strong growth and execution of a diverse eng organization",
-    "milestones": [{
-      "summary": "Respects and participates in processes, giving meaningful feedback to help the organization improve",
-      "signals": [
-        "Reflects on meetings that leave them inspired or frustrated",
-        "Teaches others about existing processes",
-        "Actively participates and makes contributions within organizational processes",
-      ],
-      "examples": [
-        "Facilitated effective tactical meeting with empathy",
-        "Explained tactical meeting format to a new hire",
-        "Provided feedback on sprint planning meeting",
-      ],
-    }, {
-      "summary": "Identifies opportunities to improve existing processes and makes changes that positively affect the local team",
-      "signals": [
-        "Defines meeting structure and cadence that meets team needs",
-        "Engages in organizational systems thinking",
-        "Advocates for improved diversity and inclusion, and proposes ideas to help",
-      ],
-      "examples": [
-        "Defined Frankenmeeting structure for small team",
-        "Improved Watch on-call rotation scheduling",
-        "Defined standard channels for inter-team communication",
-      ],
-    }, {
-      "summary": "Develops processes to solve ongoing organizational problems",
-      "signals": [
-        "Creates programs that meaningfully improve organizational diversity",
-        "Solves long-standing organizational problems",
-        "Reallocates resources to meet organizational needs",
-      ],
-      "examples": [
-        "Developed baseline team templates for consistency",
-        "Created bug-rotation program to address ongoing quality issues",
-        "Defined Guilds manifesto and charter",
-      ],
-    }, {
-      "summary": "Thinks deeply about organizational issues and identifies hidden dynamics that contribute to them",
-      "signals": [
-        "Evaluates incentive structures and their effect on execution",
-        "Analyzes existing processes for bias and shortfall",
-        "Ties abstract concerns to concrete organizational actions or norms",
-      ],
-      "examples": [
-        "Connected mobile recruiting difficulties to focus on excellence",
-        "Raised leadership level change discrepancies",
-        "Analyzed the hiring rubric for false negative potential",
-      ],
-    }, {
-      "summary": "Leads initiatives to address issues stemming from hidden dynamics and company norms",
-      "signals": [
-        "Builds programs to train leadership in desired skills",
-        "Creates new structures that provide unique growth opportunities",
-        "Leads planning and communication for reorgs",
-      ],
-      "examples": [
-        "Lead efforts to increase number of mobile engineers",
-        "Directed resources to meaningfully improve diversity at all levels",
-        "Built the growth framework rubric",
       ],
     }],
   },
@@ -961,69 +900,69 @@ export const tracks: Tracks = {
     }],
   },
 
-  "EVANGELISM": {
-    "displayName": "Evangelism",
-    "category": "D",
-    "description": "Promotes Medium to the outside world and establishes it as an attractive and thoughtful place to work",
+  "BALANCE": {
+    "displayName": "Balance",
+    "category": "C",
+    "description": "Defines processes and structures that enables the strong growth and execution of a diverse eng organization",
     "milestones": [{
-      "summary": "Represents Medium well externally, and influences individuals positively",
+      "summary": "Respects and participates in processes, giving meaningful feedback to help the organization improve",
       "signals": [
-        "Shares personal and organizational successes with their network",
-        "Attends Medium-hosted events and talks with guests",
-        "Communicates genuine and honest excitement about their work externally",
+        "Reflects on meetings that leave them inspired or frustrated",
+        "Teaches others about existing processes",
+        "Actively participates and makes contributions within organizational processes",
       ],
       "examples": [
-        "Shared a Medium product launch post on Facebook",
-        "Acted as a guide for a non-friend visitor to the office",
-        "Supported PR efforts by giving a quote or having a photo taken",
+        "Facilitated effective tactical meeting with empathy",
+        "Explained tactical meeting format to a new hire",
+        "Provided feedback on sprint planning meeting",
       ],
     }, {
-      "summary": "Participates more centrally in small events, and takes simple actions that positively influence groups of people",
+      "summary": "Identifies opportunities to improve existing processes and makes changes that positively affect the local team",
       "signals": [
-        "Takes meaningful action to introduce people to Medium",
-        "Joined public Slack group and represented Medium appropriately, and well",
-        "Organizes positive small- or medium-sized events that bring people to Medium",
+        "Defines meeting structure and cadence that meets team needs",
+        "Engages in organizational systems thinking",
+        "Advocates for improved diversity and inclusion, and proposes ideas to help",
       ],
       "examples": [
-        "Volunteered as a helper for CODE2040 writing workshop",
-        "Organized a short tour of the office by college students",
-        "Talked at a Women Who Code event hosted at Medium",
+        "Defined Frankenmeeting structure for small team",
+        "Improved Watch on-call rotation scheduling",
+        "Defined standard channels for inter-team communication",
       ],
     }, {
-      "summary": "Works hard to positively influence large groups of people on their views of Medium",
+      "summary": "Develops processes to solve ongoing organizational problems",
       "signals": [
-        "Mentors or participates in a high visibility way in an external organization",
-        "Builds fruitful partnerships with external organizations",
-        "Writes blog posts about Medium that receive moderate traffic",
+        "Creates programs that meaningfully improve organizational diversity",
+        "Solves long-standing organizational problems",
+        "Reallocates resources to meet organizational needs",
       ],
       "examples": [
-        "Represented Medium on a panel at a conference of industry experts",
-        "Established close ties with Creative Commons",
-        "Built a durable, long-standing relationship with Code2040",
+        "Developed baseline team templates for consistency",
+        "Created bug-rotation program to address ongoing quality issues",
+        "Defined Guilds manifesto and charter",
       ],
     }, {
-      "summary": "Establishes Medium as an great, innovative company and workplace to the whole industry",
+      "summary": "Thinks deeply about organizational issues and identifies hidden dynamics that contribute to them",
       "signals": [
-        "Establishes themself as an industry thought leader who attracts talent",
-        "Publishes material about Medium's organizational or technical innovations",
-        "Leverages significant following to evangelise Medium",
+        "Evaluates incentive structures and their effect on execution",
+        "Analyzes existing processes for bias and shortfall",
+        "Ties abstract concerns to concrete organizational actions or norms",
       ],
       "examples": [
-        "Published a paper on Medium technology in a peer-reviewed journal",
-        "Authored joint-press release with EFF on DNT",
-        "Published “Why Content Editable Is Terrible” on the Medium engineering blog",
+        "Connected mobile recruiting difficulties to focus on excellence",
+        "Raised leadership level change discrepancies",
+        "Analyzed the hiring rubric for false negative potential",
       ],
     }, {
-      "summary": "Introduces Medium in a positive light to a wider audience outside the industry",
+      "summary": "Leads initiatives to address issues stemming from hidden dynamics and company norms",
       "signals": [
-        "Delivers key messages to broad, mainstream audiences",
-        "Influences people with large audiences to talk about Medium positively",
-        "Drives recognition and adoption of Medium in significant numbers",
+        "Builds programs to train leadership in desired skills",
+        "Creates new structures that provide unique growth opportunities",
+        "Leads planning and communication for reorgs",
       ],
       "examples": [
-        "Published or interviewed in a mainstream newspaper or website outside tech",
-        "Keynoted a conference with international attention",
-        "Represented Medium in national televised media",
+        "Lead efforts to increase number of mobile engineers",
+        "Directed resources to meaningfully improve diversity at all levels",
+        "Built the growth framework rubric",
       ],
     }],
   },
@@ -1095,8 +1034,75 @@ export const tracks: Tracks = {
     }],
   },
 
-  "COMMUNITY": {
-    "displayName": "Community",
+  "VALIDATION": {
+    "displayName": "Validation",
+    "category": "D",
+    "description": "Builds community internally, gives of themself to the team, and champions and extols company values",
+    "milestones": [{
+      "summary": "Is available and present on current teams, and works to contribute positively to company culture",
+      "signals": [
+        "Participates in team activities and offsites",
+        "Treats colleagues and clients with respect",
+        "Joins groups or committees outside regular duties",
+      ],
+      "examples": [
+        "Joined and actively participated in the web client guild",
+        "Brought a small gift back from vacation for the team",
+        "Wrote entertaining and informative Prod Ops writeups on Hatch",
+      ],
+    }, {
+      "summary": "Steps up, builds connectedness, and takes concrete actions to promote an inclusive culture",
+      "signals": [
+        "Makes space for others to participate",
+        "Collaborates with other engineers outside direct responsibilities",
+        "Finds ways to ramp up and engage new hires quickly",
+      ],
+      "examples": [
+        "Created onboarding bingo",
+        "Brought shy and introverted people into a dominant conversation",
+        "Volunteered as secretary for a team",
+      ],
+    }, {
+      "summary": "Contributes to improving team relatedness, and helps build a culture of lending support",
+      "signals": [
+        "Takes on additional Watch shifts at short notice",
+        "Pitches in to help other teams hit deadlines, without missing own deadlines",
+        "Uses position to raise difficult issues on someone's behalf",
+      ],
+      "examples": [
+        "Lead Watch cycles with little support while still contributing to projects",
+        "Started and drove the LGBTQIA ERG",
+        "Stayed positive and improved team morale during period after layoffs",
+      ],
+    }, {
+      "summary": "Exemplifies selflessness for the team without compromising responsibilities, and lifts everyone up",
+      "signals": [
+        "Goes above and beyond on the Watch, serving the team without complaint",
+        "Implements concrete programs to signficantly improve team inclusivity",
+        "Takes on large amounts of tedious grunt work for the team without being asked",
+      ],
+      "examples": [
+        "Devoted large amount of time to helping outside direct responsibilities",
+        "Refactored hundreds of legacy Shepherd nodes",
+        "Acted as sole maintainer of Boxen for years",
+      ],
+    }, {
+      "summary": "Lives the company values, guards positive culture, and defines policies that support relatedness between teams",
+      "signals": [
+        "Brings separate teams together to build relatedness",
+        "Holds individuals, teams, and leadership accountable to Medium's values",
+        "Sets the tone, policy, and goals around maintaining an inclusive company",
+      ],
+      "examples": [
+        "Organized wine and olive tasting offsite to Napa for the whole engineering org",
+        "Devised, delivered and acted on findings from an engineer happiness survey",
+        "Challenged and corrected exclusionary behaviour or policies",
+      ],
+    }],
+  },
+
+  "VISION": {
+    "displayName": "Vision",
     "category": "D",
     "description": "Builds community internally, gives of themself to the team, and champions and extols company values",
     "milestones": [{
@@ -1197,10 +1203,10 @@ export const titles = [
   {label: 'Engineer II', minPoints: 17, maxPoints: 35},
   {label: 'Senior Engineer', minPoints: 36, maxPoints: 57},
   {label: 'Group Lead', minPoints: 36, maxPoints: 57},
-  {label: 'Staff Engineer', minPoints: 58, maxPoints: 89},
-  {label: 'Senior Group Lead', minPoints: 58, maxPoints: 89},
-  {label: 'Principal Engineer', minPoints: 90},
-  {label: 'Director of Engineering', minPoints: 90}
+  {label: 'Staff Engineer', minPoints: 58, maxPoints: 100},
+  {label: 'Senior Group Lead', minPoints: 101, maxPoints: 149},
+  {label: 'Principal Engineer', minPoints: 150},
+  {label: 'Director of Engineering', minPoints: 200}
 ]
 
 export const eligibleTitles = (milestoneMap: MilestoneMap): string[] => {
